@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SampleApp</title>
+    <title><%= yield(:title) %> | SampleApp</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -12,3 +12,13 @@
     <%= yield %>
   </body>
 </html>
+
+<!--
+Этот файл - общий макет для всех страниц, которые генерирует сайт
+
+<процент процент> - исполняет код внутри
+<процент_равно  процент> - вставляет результат в шаблон
+<процент_равно уield(двоеточие titlе) процент> - встроить значение переменной title 
+
+stylesheet_link_tag, javascript_include_tag - подключение стилей и скриптов
+-->
