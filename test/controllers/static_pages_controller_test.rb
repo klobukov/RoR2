@@ -17,7 +17,7 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     #assert_select - метод, который тестирует наличие определенного тега HTML
     #после запятой его содержимое
     # #{@base_title} - вызов переменной класса 
-    assert_select "title", "Home | #{@base_title}"
+    assert_select "title", "#{@base_title}"
   end
 
   test "should get help" do
