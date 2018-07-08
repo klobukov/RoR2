@@ -1,24 +1,28 @@
+<% # Этот файл - общий макет для всех страниц, которые генерирует сайт %>
 <!DOCTYPE html>
 <html>
   <head>
+  	<% # встроить значение переменной title %>
     <title><%= full_title(yield(:title)) %></title>
+    
+    <% # вставляет результат в шаблон. Без "=" - исполняет код внутри %>
     <%= csrf_meta_tags %>
-
+	
+	<% # подключение стилей и скриптов %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+  	<div class="container">
+  		<% # соотв. методом рендорим частичный шаблон, находящийся 
+  		   # в layouts/_header.html.erb . "_" - соглашение для частичных шаблонов %>
+		<%= render 'layouts/header' %>
+
+		<% # вставить содержание каждой отдельной страницы в содержимое %>
+    	<%= yield %>
+
+		<%= render 'layouts/footer' %>
+	</div>
   </body>
 </html>
-
-<!--
-Этот файл - общий макет для всех страниц, которые генерирует сайт
-
-<процент процент> - исполняет код внутри
-<процент_равно  процент> - вставляет результат в шаблон
-<процент_равно уield(двоеточие titlе) процент> - встроить значение переменной title 
-
-stylesheet_link_tag, javascript_include_tag - подключение стилей и скриптов
--->
