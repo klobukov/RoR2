@@ -45,7 +45,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "email validation should reject invalid adresses" do
-  	invalid_adresses = ['vava.mail.ru', 'vovo@mailru', 'vova@mail,ru', '@mail.vova']
+  	invalid_adresses = ['vava.mail.ru', 'vovo@mailru', 'vova@mail,ru', 'vaoa@mail..ru']
 
   	invalid_adresses.each do |invalid_adress|
   		@user.email = invalid_adress
@@ -58,6 +58,14 @@ class UserTest < ActiveSupport::TestCase
     duplicate_user.email = @user.email.upcase
     @user.save
     assert_not duplicate_user.valid?
+  end
+
+  test "email address should be save in downcase" do
+  	test_email = "TesT@mail.ru"
+  	@user.email = test_email
+  	@user.save
+  	# reload - перезагружает значение из базы данных
+  	assert_equal test_email.downcase, @user.reload.email
   end
 
   test "password should be present" do

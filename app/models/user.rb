@@ -2,8 +2,9 @@ class User < ApplicationRecord
 	# не идеальный регексп для емейлов
 	# это учебное приложение, а вообще НИКОГДА НЕ ИСПОЛЬЗУЙ РЕГЕКСП ДЛЯ ПРОВЕРКИ МЫЛА
 	# существуют гемы и другие способы google : ruby on rails validate email format
-	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-	before_save { self.email = email.downcase }
+	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+	before_save { self.email.downcase! }
+
 
 	validates :name, 
 		presence: true, 
