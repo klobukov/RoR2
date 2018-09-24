@@ -14,7 +14,7 @@ class User < ApplicationRecord
 		presence: true, 
 		length: { maximum: 255 }, 
 		format: { with: VALID_EMAIL_REGEX}, 
-		uniqueness: { case_sensitive: false } # уникальность мыла . чувствительно к ригистру
+		uniqueness: { case_sensitive: false } # уникальность мыла . чувствительно к регистру
 
 	validates :password,
 		presence: true,
@@ -23,6 +23,6 @@ class User < ApplicationRecord
 	# Единственное требование для запуска всего волшебста has_secure_password — 
 	# это наличие у соответствующей модели атрибута password_digest.
 	# добавляет к экземплярам метод authenticate, который принимает пароль как аргумент
-	# возвращает обхект из бд, если пароль верный, или false
+	# возвращает объект из бд, если пароль верный, или false
 	has_secure_password 
 end

@@ -12,5 +12,7 @@ Rails.application.routes.draw do
 
   get 'signup' => 'users#new'
 
+  resources :users # создать пути для users : show, patch, delete и т.д. например get users/1 - show/:id
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
