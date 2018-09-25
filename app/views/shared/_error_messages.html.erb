@@ -1,0 +1,14 @@
+<% # any? - метод, возвращающий true/false . обратный empty? %>
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      <% # pluralize возвращает правильное значение слова во множественном числе . например 2 женщинЫ %>
+      The form contains <%= pluralize(@user.errors.count, "error") %>.
+    </div>
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
