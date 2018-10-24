@@ -4,11 +4,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id]) # найти в бд юзера с id = 1
+    @user = User.find(params[:id]) # найти в бд юзера с id
   end
 
   def create
-    @user = User.new(user_params)    # Не окончательная реализация!
+    @user = User.new(user_params)  
     if @user.save
       flash[:success] = "Welcome to the Sample App!" # добавить к flash сообщениям . вывод их в application.html.erb
       redirect_to @user # перенаправит на /users/:id
